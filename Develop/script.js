@@ -223,12 +223,16 @@ function questions() {
   }
   check_NY();
 
+  var item = item[Math.floor(Math.random()*3)];
+  const passwrd = [];
+  console.log(item)
+
+
+
   
 
 }
 
-
-var starter_Pass =0;
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -239,39 +243,10 @@ function writePassword() {
   //Brings out the questions to use
   questions();
 
-  function generatePassword() {
-
-    var long = Pass_length;
-    var diff_passCombo = newYork;
-
-    var title =0;
-
-    function getRandom() {
-      return Math.random()
-    }    
-
-    switch (diff_passCombo) {
-      case 1234:
-        console.log("All yes");
-        break;
-
-      case 5678:
-        console.log("All nooos");
-        break;
-    }
-    
-
-  }
-  generatePassword();
-
-
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 }
-
-writePassword();
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
