@@ -1,115 +1,139 @@
 // Assignment code here
 
-//length of the password
-// Pops a window asking for length of the password
-var Pass_length = Number(window.prompt("How long would you like the password to be? "));
+// list of special characters
+const char_Special = ["!", "#", "$", "%","&", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", ">", 
+"?", "@", "[", "]", "^", "_", "~", "{", "}", "|" ]
 
-// checks to see if its a number, small than 8
-// and bigger than 128
-function Check_length (len_Check){
+// list of Uppercase Letters
+const char_Upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", 
+"P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
-  var len_Check = Pass_length;
-  var num = 0;
-  while (num == 0) {
+// list of Lowercase letters
+const char_Lower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", 
+"p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
-    if(isNaN(len_Check)){
-      var len_Check = Number(window.prompt("Please Write a number: "));
-    }else if(len_Check <= 8){
-      var len_Check = Number(window.prompt("Write a number greater than 8 "))
-    }else if(len_Check >= 128){
-      var len_Check = Number(window.prompt("Write a number smaller than 128 "))
-    }else {
-      console.log(len_Check)
-      num++;
-    }
-  }
+// list of Numbers
+const char_Num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 
-}
-//calls the function
-Check_length()
+// All characters in one list
+const char_All = [char_Special, char_Upper, char_Lower, char_Num]
 
+// example of how to get one character
+// console.log(char_All[1][6])
 
-// Different Chacters types
+function questions() {
+  //length of the password
+  // Pops a window asking for length of the password
+  var Pass_length = Number(window.prompt("How long would you like the password to be? "));
 
-//LowerCase
-var Smol_words = window.prompt("Would you like lowercase words? y/n to answer ");
+  // checks to see if its a number, small than 8
+  // and bigger than 128
+  function Check_length (len_Check){
 
-function Check_smol(check_Low) {
+    var len_Check = Pass_length;
+    var num = 0;
+    while (num == 0) {
 
-  var check_Low = Smol_words;
-  var someNum = 0;
-
-  while(someNum == 0){
-
-    if(check_Low == 'y') {
-      var check_Low = "yes";
-      someNum++;
-    }else if(check_Low == 'n') {
-      var check_Low = 'no';
-      someNum++;
-    }
-    else{
-      var check_Low = window.prompt("Please answer with y or n ");
+      if(isNaN(len_Check)){
+        var len_Check = Number(window.prompt("Please Write a number: "));
+      }else if(len_Check <= 8){
+        var len_Check = Number(window.prompt("Write a number greater than 8 "))
+      }else if(len_Check >= 128){
+        var len_Check = Number(window.prompt("Write a number smaller than 128 "))
+      }else {
+        console.log(len_Check)
+        num++;
+      }
     }
 
   }
-  console.log(check_Low);
-}
+  //calls the function
+  Check_length()
 
-Check_smol()
 
-// UpperCase
-var Big_words = window.prompt("Would you like Uppercase words? y/n to answer ")
+  // Different Chacters types
 
-function Check_big(check_Upper) {
+  //LowerCase
+  var Smol_words = window.prompt("Would you like lowercase words? y/n to answer ");
 
-  var check_Upper = Big_words;
-  var someNum = 0;
+  function Check_smol(check_Low) {
 
-  while(someNum == 0){
+    var check_Low = Smol_words;
+    var someNum = 0;
 
-    if(check_Upper == 'y') {
-      var check_Upper = "yes";
-      someNum++;
-    }else if(check_Upper == 'n') {
-      var check_Upper = 'no';
-      someNum++;
+    while(someNum == 0){
+
+      if(check_Low == 'y') {
+        var check_Low = "yes";
+        someNum++;
+      }else if(check_Low == 'n') {
+        var check_Low = 'no';
+        someNum++;
+      }
+      else{
+        var check_Low = window.prompt("Please answer with y or n ");
+      }
+
     }
-    else{
-      var check_Upper = window.prompt("Please answer with y or n ");
-    }
-
+    console.log(check_Low);
   }
-  console.log(check_Upper);
-}
 
-Check_big()
+  Check_smol()
 
-// Special 
-var Special_words = window.prompt("Would you like Special characters? y/n to answer ")
-function Check_special(spec_Check) {
+  // UpperCase
+  var Big_words = window.prompt("Would you like Uppercase words? y/n to answer ")
 
-  var spec_Check = Special_words;
-  var someNum = 0;
+  function Check_big(check_Upper) {
 
-  while(someNum == 0){
+    var check_Upper = Big_words;
+    var someNum = 0;
 
-    if(spec_Check == 'y') {
-      var spec_Check = "yes";
-      someNum++;
-    }else if(spec_Check == 'n') {
-      var spec_Check = 'no';
-      someNum++;
+    while(someNum == 0){
+
+      if(check_Upper == 'y') {
+        var check_Upper = "yes";
+        someNum++;
+      }else if(check_Upper == 'n') {
+        var check_Upper = 'no';
+        someNum++;
+      }
+      else{
+        var check_Upper = window.prompt("Please answer with y or n ");
+      }
+
     }
-    else{
-      var spec_Check = window.prompt("Please answer with y or n ");
-    }
-
+    console.log(check_Upper);
   }
-  console.log(spec_Check);
+
+  Check_big()
+
+  // Special 
+  var Special_words = window.prompt("Would you like Special characters? y/n to answer ")
+  function Check_special(spec_Check) {
+
+    var spec_Check = Special_words;
+    var someNum = 0;
+
+    while(someNum == 0){
+
+      if(spec_Check == 'y') {
+        var spec_Check = "yes";
+        someNum++;
+      }else if(spec_Check == 'n') {
+        var spec_Check = 'no';
+        someNum++;
+      }
+      else{
+        var spec_Check = window.prompt("Please answer with y or n ");
+      }
+
+    }
+    console.log(spec_Check);
+  }
+  Check_special()
+
 }
 
-Check_special()
 
 
 
@@ -118,6 +142,11 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
+
+  //Brings out the questions to use
+  questions();
+
+
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
