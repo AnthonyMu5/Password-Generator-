@@ -1,5 +1,14 @@
 // Assignment code here
 
+// global varibles
+var Pass_length =0;
+var Smol_words = 0;
+var Big_words =0;
+var Special_words =0;
+var Numeric_words =0;
+newYork =0;
+
+
 // list of special characters
 const char_Special = ["!", "#", "$", "%","&", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", ">", 
 "?", "@", "[", "]", "^", "_", "~", "{", "}", "|" ]
@@ -46,6 +55,8 @@ function questions() {
       }
     }
 
+    Pass_length = len_Check;
+
   }
   //calls the function
   Check_length()
@@ -76,6 +87,7 @@ function questions() {
 
     }
     console.log(check_Low);
+    Smol_words = check_Low;
   }
 
   Check_smol()
@@ -103,6 +115,7 @@ function questions() {
 
     }
     console.log(check_Upper);
+    Big_words = check_Upper;
   }
 
   Check_big()
@@ -129,13 +142,93 @@ function questions() {
 
     }
     console.log(spec_Check);
+    Special_words = spec_Check;
   }
   Check_special()
+
+  // Numbers
+  var Numeric_words = window.prompt("Would you like Numbers in your password? y/n to answer ");
+  function Check_num(num_Check) {
+    var num_Check = Numeric_words;
+    var someNum = 0;
+
+    while(someNum == 0){
+      if(num_Check == 'y') {
+        var num_Check = "yes";
+        someNum++;
+      }else if(num_Check == 'n') {
+        var num_Check = "no"
+        someNum++;
+      }else{
+        var num_Check = window.prompt("Please answer with y or n ")
+      }
+    }
+    console.log(num_Check)
+    Numeric_words =num_Check;
+  }
+  Check_num();
+
+  // The yes no problem
+  // theres 4 varibles added to make a website this is to make
+  // it easier to run
+
+  var newYork =0;
+
+  function check_NY(ny_Check) {
+    var ny_Check = newYork;
+
+    var smol_chars = Smol_words;
+    var upper_chars = Big_words;
+    var spec_chars = Special_words;
+    var numb_chars = Numeric_words;
+
+    if(smol_chars == "yes" && upper_chars =="yes" && spec_chars =="yes" && numb_chars =="yes") {
+      ny_Check = 1234;
+    }else if(smol_chars == "no" && upper_chars == "no" && spec_chars =="no" && numb_chars=="no") {
+      ny_Check= 5678;
+    }else if(smol_chars == "yes" && upper_chars == "no" && spec_chars =="no" && numb_chars=="no") {
+      ny_Check= 1678;
+    }else if(smol_chars == "no" && upper_chars == "no" && spec_chars =="no" && numb_chars=="yes") {
+      ny_Check= 5674;
+    }else if(smol_chars == "yes" && upper_chars == "yes" && spec_chars =="yes" && numb_chars=="no") {
+      ny_Check= 1238;
+    }else if(smol_chars == "no" && upper_chars == "yes" && spec_chars =="yes" && numb_chars=="yes") {
+      ny_Check= 5234;
+    }else if(smol_chars == "no" && upper_chars == "no" && spec_chars =="yes" && numb_chars=="yes") {
+      ny_Check= 5634;
+    }else if(smol_chars == "yes" && upper_chars == "yes" && spec_chars =="no" && numb_chars=="no") {
+      ny_Check= 1278;
+    }else if(smol_chars == "no" && upper_chars == "yes" && spec_chars =="no" && numb_chars=="no") {
+      ny_Check= 5278;
+    }else if(smol_chars == "yes" && upper_chars == "no" && spec_chars =="yes" && numb_chars=="yes") {
+      ny_Check= 1634;
+    }else if(smol_chars == "no" && upper_chars == "no" && spec_chars =="yes" && numb_chars=="no") {
+      ny_Check= 5638;
+    }else if(smol_chars == "yes" && upper_chars == "yes" && spec_chars =="no" && numb_chars=="yes") {
+      ny_Check= 1274;
+    }else if(smol_chars == "yes" && upper_chars == "no" && spec_chars =="no" && numb_chars=="yes") {
+      ny_Check= 1674;
+    }else if(smol_chars == "no" && upper_chars == "yes" && spec_chars =="yes" && numb_chars=="no") {
+      ny_Check= 5238;
+    }else if(smol_chars == "no" && upper_chars == "yes" && spec_chars =="no" && numb_chars=="yes") {
+      ny_Check= 5274;
+    }else if(smol_chars == "no" && upper_chars == "no" && spec_chars =="no" && numb_chars=="yes") {
+      ny_Check= 5674;
+    }else {
+      ny_Check = "Missed One"
+    }
+
+    console.log(ny_Check);
+    newYork = ny_Check;
+  }
+  check_NY();
+
+  
 
 }
 
 
-
+var starter_Pass =0;
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -146,13 +239,39 @@ function writePassword() {
   //Brings out the questions to use
   questions();
 
+  function generatePassword() {
+
+    var long = Pass_length;
+    var diff_passCombo = newYork;
+
+    var title =0;
+
+    function getRandom() {
+      return Math.random()
+    }    
+
+    switch (diff_passCombo) {
+      case 1234:
+        console.log("All yes");
+        break;
+
+      case 5678:
+        console.log("All nooos");
+        break;
+    }
+    
+
+  }
+  generatePassword();
+
 
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
+
+writePassword();
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
